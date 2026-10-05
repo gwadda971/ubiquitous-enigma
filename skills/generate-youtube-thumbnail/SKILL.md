@@ -180,4 +180,5 @@ Always present as estimates, confirm exact in the Arcads platform.
 
 - **[prompting/guide.md](prompting/guide.md)** — likeness alignment, expressions, prompt structure
 - **[prompting/formulas.md](prompting/formulas.md)** — 5 proven CTR formulas with prompt templates
+- **[scripts/generate-batch.sh](scripts/generate-batch.sh)** — reusable bash batch generator
 - **[arcads-external-api skill](../arcads-external-api/SKILL.md)** — underlying API reference for Nano Banana 2 endpoint and reference upload pipeline
