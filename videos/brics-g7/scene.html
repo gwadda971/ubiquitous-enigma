@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<style>
+:root{--bg:#0b1020;--ink:#f4f1ea;--mute:#8d96b0;--brics:#f5a623;--g7:#4f8cff;--line:#232b45}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1280px;height:720px;overflow:hidden;background:var(--bg);font-family:Inter,'DejaVu Sans',sans-serif;color:var(--ink)}
+#stage{position:relative;width:1280px;height:720px;overflow:hidden;
+  background:radial-gradient(900px 500px at 20% 0%,#16204a 0%,transparent 60%),radial-gradient(900px 500px at 100% 100%,#2a1a10 0%,transparent 55%),var(--bg)}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;opacity:.35}
+.scene{position:absolute;inset:0;opacity:0}
+.abs{position:absolute}
+.kicker{font-size:20px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);font-weight:600}
+h1{font-size:150px;font-weight:900;letter-spacing:-.04em;line-height:1}
+h2{font-size:54px;font-weight:800;letter-spacing:-.02em}
+.b{color:var(--brics)}.g{color:var(--g7)}
+.chip{position:absolute;padding:8px 16px;border-radius:999px;font-size:21px;font-weight:600;border:2px solid}
+.chip.b{border-color:var(--brics);background:rgba(245,166,35,.12);color:#ffd791}
+.chip.g{border-color:var(--g7);background:rgba(79,140,255,.12);color:#b9d0ff}
+.card{position:absolute;border-radius:24px;border:2px solid var(--line);background:rgba(18,25,52,.7)}
+.cap{position:absolute;left:0;right:0;bottom:36px;padding-top:8px;text-align:center;font-size:27px;font-weight:600;color:var(--ink);padding:0 120px;line-height:1.3;text-shadow:0 2px 12px #000}
+.src{position:absolute;right:40px;top:40px;text-align:right;z-index:2;font-size:13px;color:var(--mute)}
+.num{font-weight:900;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.bar{position:absolute;border-radius:10px}
+.lbl{position:absolute;font-weight:800;font-size:30px}
+</style></head><body>
+<div id="stage"><div class="grid"></div>
+
+<!-- S1 titre -->
+<div class="scene" id="s1">
+  <div class="abs kicker" id="s1k" style="left:0;right:0;top:150px;text-align:center">Économie mondiale · estimations 2026</div>
+  <div class="abs" style="left:0;right:0;top:215px;text-align:center"><h1><span class="b" id="s1a" style="display:inline-block">BRICS</span> <span style="font-size:80px;color:var(--mute);font-weight:600" id="s1v">vs</span> <span class="g" id="s1b" style="display:inline-block">G7</span></h1></div>
+  <div class="abs" id="s1s" style="left:0;right:0;top:420px;text-align:center;font-size:40px;font-weight:600">Qui est vraiment le plus puissant&nbsp;?</div>
+  <div class="abs" id="s1l" style="left:340px;top:520px;height:6px;width:600px;border-radius:3px;background:linear-gradient(90deg,var(--brics),var(--g7));transform-origin:left"></div>
+</div>
+
+<!-- S2 deux blocs -->
+<div class="scene" id="s2">
+  <div class="abs kicker" style="left:60px;top:36px">Les deux blocs</div>
+  <div class="card" id="s2cb" style="left:50px;top:90px;width:760px;height:480px"></div>
+  <div class="card" id="s2cg" style="left:830px;top:90px;width:400px;height:480px"></div>
+  <div class="abs" id="s2tb" style="left:80px;top:108px;font-size:42px;font-weight:800"><span class="b">BRICS</span> <span style="color:var(--mute);font-size:26px;font-weight:600">· <span id="s2nb">0</span> pays</span></div>
+  <div class="abs" id="s2tg" style="left:860px;top:108px;font-size:42px;font-weight:800"><span class="g">G7</span> <span style="color:var(--mute);font-size:26px;font-weight:600">· <span id="s2ng">0</span> pays</span></div>
+  <div id="s2chips"></div>
+  <div class="src" style="bottom:130px;left:60px;font-size:15px" id="s2note">Onze pays comptés pour les BRICS, Arabie saoudite incluse dans cette comparaison statistique.</div>
+</div>
+
+<!-- S3 PIB nominal -->
+<div class="scene" id="s3">
+  <div class="abs kicker" style="left:60px;top:36px">1 · PIB nominal</div>
+  <div class="abs" style="left:60px;top:70px"><h2>Le G7 reste devant en valeur</h2></div>
+  <div class="abs lbl g" style="left:60px;top:230px">G7</div>
+  <div class="bar" id="s3g" style="left:60px;top:285px;height:90px;background:var(--g7);width:0"></div>
+  <div class="abs num" id="s3gn" style="top:300px;font-size:54px"></div>
+  <div class="abs lbl b" style="left:60px;top:410px">BRICS</div>
+  <div class="bar" id="s3b" style="left:60px;top:465px;height:90px;background:var(--brics);width:0"></div>
+  <div class="abs num" id="s3bn" style="top:480px;font-size:54px"></div>
+  <div class="abs" id="s3c" style="right:70px;top:140px;font-size:44px;font-weight:900;color:var(--g7);border:3px solid var(--g7);border-radius:16px;padding:8px 22px">G7&nbsp;: +57&nbsp;%</div>
+  <div class="src">Milliards de $ · estimations FMI 2026 agrégées par Statistics of the World</div>
+</div>
+
+<!-- S4 PPA -->
+<div class="scene" id="s4">
+  <div class="abs kicker" style="left:60px;top:36px">2 · PIB en parité de pouvoir d'achat</div>
+  <div class="abs" style="left:60px;top:70px"><h2>Mais en volume, les BRICS <span class="b">dépassent</span> le G7</h2></div>
+  <div class="bar" id="s4g" style="left:330px;width:230px;bottom:200px;background:var(--g7);height:0"></div>
+  <div class="bar" id="s4b" style="left:680px;width:230px;bottom:200px;background:var(--brics);height:0"></div>
+  <div class="abs" style="left:330px;width:230px;text-align:center;bottom:160px" ><span class="lbl g">G7</span></div>
+  <div class="abs" style="left:680px;width:230px;text-align:center;bottom:160px"><span class="lbl b">BRICS</span></div>
+  <div class="abs num g" id="s4gn" style="left:300px;width:290px;text-align:center;font-size:46px"></div>
+  <div class="abs num b" id="s4bn" style="left:650px;width:290px;text-align:center;font-size:46px"></div>
+  <div class="abs" id="s4line" style="left:330px;width:580px;height:0;border-top:3px dashed #fff;opacity:0"></div>
+  <div class="abs" id="s4c" style="left:960px;top:330px;font-size:60px;font-weight:900;color:var(--brics);line-height:1.05">+46&nbsp;%<div style="font-size:22px;color:var(--ink);font-weight:600;margin-top:6px">de plus que<br>le G7 en PPA</div></div>
+  <div class="src">Milliers de milliards de $ internationaux · estimations 2026</div>
+</div>
+
+<!-- S5 PPA expliquée -->
+<div class="scene" id="s5">
+  <div class="abs kicker" style="left:60px;top:36px">C'est quoi, la PPA&nbsp;?</div>
+  <div class="abs" style="left:60px;top:70px"><h2>Le même panier, des prix différents</h2></div>
+  <div class="card" id="s5a" style="left:120px;top:210px;width:480px;height:290px"></div>
+  <div class="card" id="s5b" style="left:680px;top:210px;width:480px;height:290px"></div>
+  <div class="abs" id="s5at" style="left:120px;width:480px;top:235px;text-align:center;font-size:30px;font-weight:700" ><span class="g">Pays du G7</span></div>
+  <div class="abs" id="s5bt" style="left:680px;width:480px;top:235px;text-align:center;font-size:30px;font-weight:700"><span class="b">Pays des BRICS</span></div>
+  <div class="abs num" id="s5ap" style="left:120px;width:480px;top:300px;text-align:center;font-size:110px;color:var(--g7)">100&nbsp;$</div>
+  <div class="abs num" id="s5bp" style="left:680px;width:480px;top:300px;text-align:center;font-size:110px;color:var(--brics)">40&nbsp;$</div>
+  <div class="abs" id="s5ar" style="left:120px;width:480px;top:430px;text-align:center;font-size:24px;color:var(--mute)">prix du panier</div>
+  <div class="abs" id="s5br" style="left:680px;width:480px;top:430px;text-align:center;font-size:24px;color:var(--mute)">prix du panier</div>
+  <div class="abs" id="s5eq" style="left:0;right:0;top:530px;text-align:center;font-size:30px;font-weight:700">La PPA corrige ces écarts de prix <span style="color:var(--mute);font-weight:500">(exemple illustratif)</span></div>
+</div>
+
+<!-- S6 dollar -->
+<div class="scene" id="s6">
+  <div class="abs kicker" style="left:60px;top:36px">3 · La puissance financière</div>
+  <div class="abs" style="left:60px;top:70px"><h2>Le dollar, pilier du <span class="g">G7</span></h2></div>
+  <svg class="abs" style="left:110px;top:170px" width="430" height="430" viewBox="-215 -215 430 430">
+    <circle r="150" fill="none" stroke="#232b45" stroke-width="56"/>
+    <circle id="s6arc" r="150" fill="none" stroke="#4f8cff" stroke-width="56" stroke-linecap="butt" transform="rotate(-90)" stroke-dasharray="0 942"/>
+  </svg>
+  <div class="abs num" id="s6n" style="left:110px;width:430px;top:362px;text-align:center;font-size:62px">0&nbsp;%</div>
+  <div class="abs" id="s6t" style="left:600px;top:200px;width:620px;font-size:36px;font-weight:700;line-height:1.3">des réserves de change mondiales sont en dollars<div style="font-size:20px;color:var(--mute);font-weight:500;margin-top:6px">2<sup>e</sup> trimestre 2026 · FMI</div></div>
+  <div id="s6l"></div>
+</div>
+
+<!-- S7 conclusion -->
+<div class="scene" id="s7">
+  <div class="abs kicker" style="left:60px;top:36px">Ma conclusion</div>
+  <div class="card" id="s7a" style="left:80px;top:130px;width:520px;height:300px"></div>
+  <div class="card" id="s7b" style="left:680px;top:130px;width:520px;height:300px"></div>
+  <div class="abs" id="s7at" style="left:110px;top:160px;width:460px"><div style="font-size:24px;color:var(--mute);font-weight:600">Volume de production (PPA)</div><div class="b" style="font-size:90px;font-weight:900;margin-top:20px">BRICS</div><div class="num b" style="font-size:44px">91,3 vs 62,3</div></div>
+  <div class="abs" id="s7bt" style="left:710px;top:160px;width:460px"><div style="font-size:24px;color:var(--mute);font-weight:600">PIB nominal &amp; finance</div><div class="g" style="font-size:90px;font-weight:900;margin-top:20px">G7</div><div class="num g" style="font-size:44px">55,3 vs 35,2</div></div>
+  <div class="abs" id="s7q" style="left:100px;right:100px;top:480px;text-align:center;font-size:30px;font-weight:600;line-height:1.35">Et si les BRICS réduisent leur usage du dollar,<br><span style="color:var(--brics)">quelles conséquences pour l'euro, la France et les Antilles&nbsp;?</span></div>
+</div>
+
+<div class="cap" id="cap"></div>
+<div class="abs" id="prog" style="left:0;bottom:0;height:5px;background:linear-gradient(90deg,var(--brics),var(--g7));width:0"></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const ease=x=>1-Math.pow(1-clamp(x),3);
+const easeIO=x=>{x=clamp(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const back=x=>{x=clamp(x);const c=1.70158;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const P=(t,s,d)=>clamp((t-s)/d);
+const fmt=(n,dec=0)=>n.toLocaleString('fr-FR',{minimumFractionDigits:dec,maximumFractionDigits:dec}).replace(/ | /g,' ');
+
+const BR=['Chine','Inde','Brésil','Russie','Afrique du Sud','Égypte','Éthiopie','Iran','Émirats arabes unis','Indonésie','Arabie saoudite'];
+const G7=['États-Unis','Japon','Allemagne','Royaume-Uni','France','Italie','Canada'];
+// positions chips
+(function(){
+  const c=$('s2chips');let h='';
+  const place=(arr,cls,x0,y0,maxW)=>{let x=x0,y=y0,out=[];arr.forEach((n,i)=>{const w=n.length*12.5+40;if(x+w>x0+maxW){x=x0;y+=62}out.push(`<div class="chip ${cls}" data-i="${i}" data-k="${cls}" style="left:${x}px;top:${y}px;opacity:0">${n}</div>`);x+=w+12});return out.join('')};
+  c.innerHTML=place(BR,'b',80,190,700)+place(G7,'g',860,190,340);
+})();
+const CAPS=[
+ [0,8,"BRICS contre G7 : qui est le plus puissant en 2026 ?"],
+ [8,20,"Deux blocs : onze pays pour les BRICS, sept puissances industrialisées pour le G7."],
+ [20,40,"En PIB nominal, le G7 domine : 55 320 milliards de dollars contre 35 180 pour les BRICS."],
+ [40,62,"Mais en parité de pouvoir d'achat, les BRICS passent devant : 91 280 milliards contre 62 290."],
+ [62,72,"La PPA corrige les écarts de prix : un même panier coûte moins cher dans beaucoup de pays émergents."],
+ [72,82,"Le G7 garde la puissance financière : le dollar pèse 56,7 % des réserves de change mondiales."],
+ [82,90,"Les BRICS gagnent en volume, le G7 reste devant en valeur nominale et en influence financière."]
+];
+const SC=[['s1',0,8],['s2',8,20],['s3',20,40],['s4',40,62],['s5',62,72],['s6',72,82],['s7',82,90]];
+const T_END=90;
+
+function render(t){
+  // scene visibility
+  SC.forEach(([id,a,b])=>{
+    const o=Math.min(P(t,a,.5),1-P(t,b-.5,.5));
+    $(id).style.opacity=(t>=a&&t<b)?clamp(o):0;
+  });
+  // captions
+  let cap=CAPS.find(c=>t>=c[0]&&t<c[1]);
+  $('cap').textContent=cap?cap[2]:'';
+  $('cap').style.opacity=cap?Math.min(P(t,cap[0]+.6,.6),1-P(t,cap[1]-.5,.4)):0;
+  $('prog').style.width=(t/T_END*100)+'%';
+
+  // S1
+  {const l=t;
+   $('s1k').style.opacity=ease(P(l,.3,.8));
+   $('s1a').style.transform=`translateX(${(1-ease(P(l,.6,1)))*-400}px)`;$('s1a').style.opacity=ease(P(l,.6,.8));
+   $('s1b').style.transform=`translateX(${(1-ease(P(l,.6,1)))*400}px)`;$('s1b').style.opacity=ease(P(l,.6,.8));
+   $('s1v').style.opacity=ease(P(l,1.4,.6));
+   $('s1s').style.opacity=ease(P(l,2.6,.8));$('s1s').style.transform=`translateY(${(1-ease(P(l,2.6,.8)))*20}px)`;
+   $('s1l').style.transform=`scaleX(${easeIO(P(l,3.4,1.6))})`;}
+  // S2
+  {const l=t-8;
+   $('s2cb').style.opacity=ease(P(l,.3,.6));$('s2cg').style.opacity=ease(P(l,.3,.6));
+   $('s2tb').style.opacity=ease(P(l,.5,.6));$('s2tg').style.opacity=ease(P(l,.5,.6));
+   let nb=0,ng=0;
+   document.querySelectorAll('#s2chips .chip').forEach(el=>{
+     const i=+el.dataset.i,k=el.dataset.k;
+     const st=k=='b'?1.2+i*.42:1.2+i*.5;
+     const p=back(P(l,st,.5));el.style.opacity=clamp(p);el.style.transform=`scale(${.6+.4*clamp(p,0,1.2)})`;
+     if(l>=st+.1){k=='b'?nb++:ng++}
+   });
+   $('s2nb').textContent=nb;$('s2ng').textContent=ng;
+   $('s2note').style.opacity=ease(P(l,6.8,.8));}
+  // S3
+  {const l=t-20,max=900;
+   const gp=easeIO(P(l,1.2,4)),bp=easeIO(P(l,2.2,4));
+   const gw=gp*max,bw=bp*max*35180/55320;
+   $('s3g').style.width=gw+'px';$('s3b').style.width=bw+'px';
+   $('s3gn').style.left=(60+gw+20)+'px';$('s3bn').style.left=(60+bw+20)+'px';
+   $('s3gn').innerHTML=`<span class="g">${fmt(55320*gp)}</span>`;
+   $('s3bn').innerHTML=`<span class="b">${fmt(35180*bp)}</span>`;
+   $('s3gn').style.opacity=$('s3bn').style.opacity=ease(P(l,1.2,.5));
+   $('s3c').style.opacity=ease(P(l,8,.6));$('s3c').style.transform=`scale(${.8+.2*back(P(l,8,.7))})`;}
+  // S4
+  {const l=t-40,H=300;
+   const gp=easeIO(P(l,1.2,4)),bp=easeIO(P(l,2,6.5));
+   const gh=gp*H*62.29/91.28,bh=bp*H;
+   $('s4g').style.height=gh+'px';$('s4b').style.height=bh+'px';
+   const gn=$('s4gn'),bn=$('s4bn');
+   gn.style.bottom=(200+gh+10)+'px';bn.style.bottom=(200+bh+10)+'px';
+   gn.innerHTML=fmt(62.29*gp,2);bn.innerHTML=fmt(91.28*bp,2);
+   gn.style.opacity=bn.style.opacity=ease(P(l,1.2,.5));
+   const ly=200+H*62.29/91.28;
+   const L=$('s4line');L.style.bottom=ly+'px';L.style.opacity=ease(P(l,9,.5));
+   L.style.width=(580*ease(P(l,9,1.2)))+'px';
+   // overtaking flash
+   const fl=P(l,9.5,3);
+   $('s4b').style.boxShadow=fl>0&&fl<1?`0 0 ${60*Math.sin(fl*Math.PI)}px var(--brics)`:'none';
+   $('s4c').style.opacity=ease(P(l,11,.8));$('s4c').style.transform=`translateY(${(1-ease(P(l,11,.8)))*20}px)`;
+   $('s4line').style.top='auto';}
+  // S5
+  {const l=t-62;
+   ['a','b'].forEach((k,i)=>{
+     const s=.8+i*1.2;const o=ease(P(l,s,.6));
+     ['s5'+k,'s5'+k+'t','s5'+k+'r'].forEach(id=>$(id).style.opacity=o);
+     $('s5'+k+'p').style.opacity=o;
+     $('s5'+k).style.transform=`translateY(${(1-o)*30}px)`;
+   });
+   $('s5eq').style.opacity=ease(P(l,5.5,.8));
+   // price count
+   const p=P(l,2.4,1.5);
+   $('s5bp').innerHTML=fmt(100-60*easeIO(p))+'&nbsp;$';}
+  // S6
+  {const l=t-72;
+   const p=easeIO(P(l,.8,3.5));const C=942;
+   $('s6arc').setAttribute('stroke-dasharray',`${C*.567*p} ${C}`);
+   $('s6n').innerHTML=fmt(56.7*p,1)+'&nbsp;%';
+   $('s6t').style.opacity=ease(P(l,2,.8));
+   const items=['Marchés de capitaux','Grandes multinationales','Poids du dollar'];
+   $('s6l').innerHTML=items.map((s,i)=>`<div class="chip g" style="left:600px;top:${360+i*70}px;opacity:${ease(P(l,4+i*.9,.5))}">${s}</div>`).join('');}
+  // S7
+  {const l=t-82;
+   $('s7a').style.opacity=$('s7at').style.opacity=ease(P(l,.6,.6));
+   $('s7b').style.opacity=$('s7bt').style.opacity=ease(P(l,1.8,.6));
+   $('s7q').style.opacity=ease(P(l,4,.8));}
+}
+window.render=render;render(0);
+</script></body></html>
